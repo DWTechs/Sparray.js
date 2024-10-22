@@ -48,33 +48,41 @@ $ npm i @dwtechs/sparray
 ## Usage
 
 
-### ES6 / TypeScript
+### CommonJS
+
+Example of use with Express.js in Javascript using CommonJS format 
 
 ```javascript
-import { isFunction, isArray } from "@dwtechs/sparray";
+const sp = require("@dwtechs/sparray/dist/sparray.cjs");
 
-if (isFunction(variable)) {
-  //variable is a function
+/**
+ * Break a large array of rows from the body of the request into smaller chunks.
+ *
+ * @function chunk
+ * @param {Object} req - The express request object.
+ * @param {Object} res - The express response object.
+ * @param {function} next - The next middleware in the stack.
+ */
+function chunk(req, res, next) {
+  req.chunks = sp.chunk(req.body.rows, null);
+  next();
 }
 
-if (!isArray(variable, '=', 2)) {
-  //variable is not an array of length 2
-}
+module.exports = {
+  chunk,
+};
+
 ```
 
 
-### CommonJS
+### ES6 / TypeScript
+
+Import of the Sparray.js module into a Typescript file
 
 ```javascript
-const ch = require("@dwtechs/sparray/dist/ch.cjs");
 
-if (ch.isFunction(variable)) {
-  //variable is a function
-}
+import { chunk, deleteProps } from "@dwtechs/sparray";
 
-if (!ch.isArray(variable, '=', 2)) {
-  //variable is not an array of length 2
-}
 ```
 
 
@@ -83,42 +91,19 @@ if (!ch.isArray(variable, '=', 2)) {
 
 ```javascript
 
-getChunkSize(): {},
-setChunkSize(): {},
-chunk(): {},
-deleteProps(): {},
-getCommonValues(): {},
-flatten(): {},
+let chunkSize = 100 //Default value
 
+getChunkSize(): number {}
 
-isBoolean(bool: any): boolean {}
+setChunkSize(size: number): number {}
 
-isString(string: any, emptyCheck: boolean = false): boolean {}
+chunk(rows: any[], size = chunkSize): any[] {}
 
-// If typeCheck = false values like '4', '0', '8e4', '+true', '0x44' return true
-isNumber(number: any, typeCheck: boolean = true): boolean {}
+getCommonValues(a: any[], b: any[]): any[] {}
 
-isSymbol(sym: any): boolean {}
+flatten(chunks: any[]): any[] {}
 
-```
-
-example : 
-
-```javascript
-
-let ar = ['dog','cat','bird'];
-
-if (isArray(array)) {
-  // check if ar is an array
-}
-
-if (isArray(array, '=', 2)) {
-  // check if ar is an array of length 2
-}
-
-if (isArray(array, '>=', 1)) {
-  // check if ar is an array of length greater than or equal to 1
-}
+deleteProps(arr: any[], props: string[]): any[] {}
 
 ```
 

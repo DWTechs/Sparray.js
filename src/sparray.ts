@@ -75,7 +75,7 @@ function deleteProps(arr: any[], props: string[]): any[] {
  * @param {Array} chunks - The array of chunks to be flattened.
  * @return {Array} The flattened array.
  */
-function flatten(chunks: any[]) {
+function flatten(chunks: any[]): any[] {
   return isArray(chunks, '>', 0) ? chunks.flat(2) : chunks;
 }
 
