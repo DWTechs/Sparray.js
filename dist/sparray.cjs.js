@@ -116,7 +116,8 @@ function getChunkSize() {
     return chunkSize;
 }
 function setChunkSize(size) {
-    return chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+    chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+    return chunkSize;
 }
 function chunk(rows, size = chunkSize) {
     const s = isValidInteger(size, 1, 99999, true) ? size : chunkSize;

@@ -1,4 +1,3 @@
-
 declare function getChunkSize(): number;
 declare function setChunkSize(size: number): number;
 declare function chunk(rows: any[], size?: number): any[];
@@ -12,5 +11,5 @@ export {
   chunk,
   deleteProps,
   getCommonValues,
-  flatten,
+  flatten
 };

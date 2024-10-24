@@ -18,7 +18,8 @@ function getChunkSize(): number {
  * @return {number} The new chunk size.
  */
 function setChunkSize(size: number): number {
-  return chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+  chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+  return chunkSize;
 }
 
 /**
