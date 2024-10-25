@@ -97,7 +97,7 @@ getChunkSize(): number {}
 
 setChunkSize(size: number): number {}
 
-chunk(rows: any[], size = chunkSize): any[] {}
+chunk(rows: any[], size?: number = chunkSize): any[] {} //size?: number
 
 getCommonValues(a: any[], b: any[]): any[] {}
 
@@ -106,7 +106,6 @@ flatten(chunks: any[]): any[] {}
 deleteProps(arr: any[], props: string[]): any[] {}
 
 ```
-
 
 ## Contributors
 

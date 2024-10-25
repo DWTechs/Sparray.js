@@ -4,10 +4,12 @@ const config =  {
   input: "build/es6/sparray.js",
   output: {
     name: "sparray",
-    file: "build/sparray.js",
+    file: "build/sparray.mjs",
     format: "es"
   },
-  external: [],
+  external: [
+    "@dwtechs/checkard",
+  ],
   plugins: [
     babel({
       // exclude: "node_modules/**" // only transpile our source code

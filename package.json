@@ -43,14 +43,12 @@
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-commonjs": "28.0.1",
     "@rollup/plugin-node-resolve": "15.3.0",
+    "@babel/plugin-transform-runtime": "7.25.9",
     "babel-jest": "29.7.0",
     "core-js": "3.33.0",
     "jest": "29.7.0",
-    "jest-environment-jsdom": "29.7.0",
     "rollup": "4.24.0",
     "typescript": "5.6.3",
     "uglify-js": "3.19.3"
   }
 }
-
-
