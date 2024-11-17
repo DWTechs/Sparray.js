@@ -1,4 +1,4 @@
-import  { flatten } from "../dist/sparray";
+const { flatten } = require("../dist/sparray.cjs");
 
 const arrayToFlatten = [
   [

@@ -131,7 +131,7 @@ function chunk(rows, size = chunkSize) {
     return chunks;
 }
 function getCommonValues(a, b) {
-    return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter((el) => b.includes(el)) : [];
+    return (isArray(a, '>', 0) && isArray(b, '>', 0)) ? a.filter((el) => b.includes(el)) : [];
 }
 function deleteProps(arr, props) {
     if (isArray(arr, '>', 0) || isArray(props, '>', 0))

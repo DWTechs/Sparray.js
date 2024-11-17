@@ -1,4 +1,4 @@
-import  { deleteProps } from "../dist/sparray";
+const { deleteProps } = require("../dist/sparray.cjs");
 
 const arrayToClean = [
   {

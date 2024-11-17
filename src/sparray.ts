@@ -44,8 +44,8 @@ function chunk(rows: any[], size = chunkSize): any[] {
 /**
  * Returns an array of elements that are common to both input arrays.
  *
- * @param {Array} array1 - The first array to compare.
- * @param {Array} array2 - The second array to compare.
+ * @param {Array} a - The first array to compare.
+ * @param {Array} b - The second array to compare.
  * @return {Array} An array of elements that exist in both input arrays.
  */
 function getCommonValues(a: any[], b: any[]): any[] {

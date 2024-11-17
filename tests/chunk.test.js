@@ -1,4 +1,4 @@
-import  { chunk } from "../dist/sparray";
+const { chunk } = require("../dist/sparray.cjs");
 
 test("Should chunk an array of objects into smaller arrays of specified size using realistic data for our usecase", () => {
   const arrayToChunk = [

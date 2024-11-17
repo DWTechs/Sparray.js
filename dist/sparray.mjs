@@ -26,37 +26,7 @@ https://github.com/DWTechs/Sparray.js
 
 import { isValidInteger, isArray } from '@dwtechs/checkard';
 
-function _arrayLikeToArray(r, a) {
-  (null == a || a > r.length) && (a = r.length);
-  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-  return n;
-}
-function _createForOfIteratorHelperLoose(r, e) {
-  var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (t) return (t = t.call(r)).next.bind(t);
-  if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e) {
-    t && (r = t);
-    var o = 0;
-    return function () {
-      return o >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[o++]
-      };
-    };
-  }
-  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(r, a) {
-  if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray(r, a);
-    var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
-  }
-}
-
-var chunkSize = 100;
+let chunkSize = 100;
 function getChunkSize() {
   return chunkSize;
 }
@@ -64,32 +34,23 @@ function setChunkSize(size) {
   chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
   return chunkSize;
 }
-function chunk(rows, size) {
-  if (size === void 0) {
-    size = chunkSize;
-  }
-  var s = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
-  var count = rows.length;
+function chunk(rows, size = chunkSize) {
+  const s = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+  const count = rows.length;
   if (count <= s) return [rows];
-  var chunks = [];
-  for (var i = 0; i < count; i += size) {
+  const chunks = [];
+  for (let i = 0; i < count; i += size) {
     chunks.push(rows.slice(i, i + size));
   }
   return chunks;
 }
 function getCommonValues(a, b) {
-  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter(function (el) {
-    return b.includes(el);
-  }) : [];
+  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter(el => b.includes(el)) : [];
 }
 function deleteProps(arr, props) {
-  if (isArray(arr, '>', 0) || isArray(props, '>', 0)) {
-    for (var _iterator = _createForOfIteratorHelperLoose(arr), _step; !(_step = _iterator()).done;) {
-      var l = _step.value;
-      for (var _iterator2 = _createForOfIteratorHelperLoose(props), _step2; !(_step2 = _iterator2()).done;) {
-        var p = _step2.value;
-        delete l[p];
-      }
+  if (isArray(arr, '>', 0) || isArray(props, '>', 0)) for (const l of arr) {
+    for (const p of props) {
+      delete l[p];
     }
   }
   return arr;

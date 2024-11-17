@@ -61,14 +61,14 @@ module.exports = {
   // globals: {},
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: [
-    'node_modules', 'src'
-  ],
+  // moduleDirectories: [
+  //   "node_modules"
+  // ],
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
-    'mjs',
     "js",
+    "mjs",
   //   "json",
   //   "jsx",
   //   "ts",
@@ -89,7 +89,7 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: 'babel-jest',
+  // preset: null,
 
   // Run tests from one or more projects
   // projects: null,
@@ -165,12 +165,12 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  transform: {'^.+\\.(mjs|js)$': 'babel-jest'},
+  // transform: null,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: [
-    'node_modules/(?!(@dwtechs/sparray)/)'
-  ],
+  // transformIgnorePatterns: [
+  //   "/node_modules/"
+  // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

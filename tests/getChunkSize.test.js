@@ -1,101 +1,30 @@
-import  { chunk } from "../dist/sparray";
+const { setChunkSize, getChunkSize } = require("../dist/sparray.cjs");
 
-test("Should chunk an array of objects into smaller arrays of specified size using realistic data for our usecase", () => {
-  const arrayToChunk = [
-    {
-      name: "Toto",
-      age: 21,
-    },
-    {
-      name: "Titi",
-      age: 23,
-    },
-    {
-      name: "Tata",
-      age: 32,
-    },
-    {
-      name: "Tutu",
-      age: 32,
-    },
-  ];
-  const expected = [
-    [
-      {
-        name: "Toto",
-        age: 21,
-      },
-      {
-        name: "Titi",
-        age: 23,
-      },
-    ],
-    [
-      {
-        name: "Tata",
-        age: 32,
-      },
-      {
-        name: "Tutu",
-        age: 32,
-      },
-    ],
-  ];
-  expect(chunk(arrayToChunk, 2)).toMatchObject(expected);
+test('should return the default chunk size', () => {
+  expect(getChunkSize()).toBe(100);
 });
 
-test("should chunk an array into smaller arrays of specified size", () => {
-  const rows = [1, 2, 3, 4, 5];
-  const size = 2;
-  const expected = [[1, 2], [3, 4], [5]];
-  expect(chunk(rows, size)).toEqual(expected);
+test('should return the current chunk size after setting it', () => {
+  setChunkSize(50);
+  expect(getChunkSize()).toBe(50);
 });
 
-test("should handle an array smaller than the chunk size", () => {
-  const rows = [1, 2, 3];
-  const size = 5;
-  const expected = [[1, 2, 3]];
-  expect(chunk(rows, size)).toEqual(expected);
+test('should return the default chunk size if the current chunk size is not a positive integer', () => {
+  setChunkSize(-1);
+  expect(getChunkSize()).toBe(50);
 });
 
-test("should work with an empty array", () => {
-  const rows = [];
-  const size = 3;
-  const expected = [[]];
-  expect(chunk(rows, size)).toEqual(expected);
+test('should return the default chunk size if the current chunk size is 0', () => {
+  setChunkSize(0);
+  expect(getChunkSize()).toBe(50);
 });
 
-test("should chunk an array into individual elements when chunk size is 1", () => {
-  const rows = [1, 2, 3];
-  const size = 1;
-  const expected = [[1], [2], [3]];
-  expect(chunk(rows, size)).toEqual(expected);
+test('should return the default chunk size if the current chunk size is not an integer', () => {
+  setChunkSize(10.5);
+  expect(getChunkSize()).toBe(50);
 });
 
-test("should handle an array that is exactly the size of the chunk size", () => {
-  const rows = [1, 2, 3, 4];
-  const size = 4;
-  const expected = [[1, 2, 3, 4]];
-  expect(chunk(rows, size)).toEqual(expected);
-});
-
-test("should return the original array in a single chunk for a very large chunk size", () => {
-  const rows = [1, 2, 3];
-  const size = 1000;
-  const expected = [[1, 2, 3]];
-  expect(chunk(rows, size)).toEqual(expected);
-});
-
-test("should correctly chunk an array containing non-numeric values", () => {
-  const rows = ["a", "b", "c", "d", "e"];
-  const size = 2;
-  const expected = [["a", "b"], ["c", "d"], ["e"]];
-  expect(chunk(rows, size)).toEqual(expected);
-});
-
-test("should correctly chunk an array containing mixed types of values", () => {
-  const rows = [1, "b", true, { val: 4 }, ["e"]];
-  const size = 2;
-  const expected = [[1, "b"], [true, { val: 4 }], [["e"]]];
-  expect(chunk(rows, size)).toEqual(expected);
+test('should return the default chunk size if the current chunk size is not a number', () => {
+  setChunkSize('abc');
+  expect(getChunkSize()).toBe(50);
 });
