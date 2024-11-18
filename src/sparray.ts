@@ -49,7 +49,18 @@ function chunk(rows: any[], size = chunkSize): any[] {
  * @return {Array} An array of elements that exist in both input arrays.
  */
 function getCommonValues(a: any[], b: any[]): any[] {
-  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter((el) => b.includes(el)) : [];
+  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter((e) => b.includes(e)) : [];
+}
+
+/**
+ * Checks if there are common values between two arrays.
+ *
+ * @param {Array} a - The first array to compare.
+ * @param {Array} b - The second array to compare.
+ * @return {boolean} True if there are common values, otherwise false.
+ */
+function checkCommonValues(a: any[], b: any[]): boolean {
+  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.some((e) => b.includes(e))  : false;
 }
 
 /**
@@ -85,6 +96,7 @@ export {
   setChunkSize,
   chunk,
   deleteProps,
+  checkCommonValues,
   getCommonValues,
   flatten,
 };

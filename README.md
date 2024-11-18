@@ -83,6 +83,24 @@ Import of the Sparray.js module into a Typescript file
 
 import { chunk, deleteProps } from "@dwtechs/sparray";
 
+/**
+ * Break a large array of rows from the body of the request into smaller chunks.
+ *
+ * @function chunk
+ * @param {Object} req - The express request object.
+ * @param {Object} res - The express response object.
+ * @param {function} next - The next middleware in the stack.
+ */
+function chunk(req, res, next) {
+  req.chunks = sp.chunk(req.body.rows, null);
+  next();
+}
+
+module.exports = {
+  chunk,
+};
+
+
 ```
 
 
