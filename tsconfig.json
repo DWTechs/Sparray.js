@@ -3,7 +3,7 @@
     "module": "ES6",
     "moduleResolution": "node",
     "target": "ES6",
-    "lib": ["es2015", "dom"],
+    "lib": ["es2019", "dom"],
     "sourceMap": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
