@@ -19,9 +19,8 @@
 
 
 ## Synopsis
-Useful methods to work with arrays in Javascript
 
-**[Sparray.js](https://github.com/DWTechs/Sparray.js)** is an open source xx library for Node.js to  (...)
+**[Sparray.js](https://github.com/DWTechs/Sparray.js)** is an open source Swiss army knife library for Node.js to work with arrays in Javascript.
 
 - Only 1 dependency to check inputs variables
 - Very lightweight
@@ -33,7 +32,7 @@ Useful methods to work with arrays in Javascript
 
 ## Support
 
-- node: x.x
+- node: 14
 
 This is the oldest targeted versions. The library should work properly on older versions of Node.js but we do not support it officially.  
 
@@ -48,49 +47,29 @@ $ npm i @dwtechs/sparray
 ## Usage
 
 
-### CommonJS
-
-Example of use with Express.js in Javascript using CommonJS format 
+### ES6 / TypeScript
 
 ```javascript
-const sp = require("@dwtechs/sparray/dist/sparray.cjs");
+import { chunk } from "@dwtechs/sparray";
 
-/**
- * Break a large array of rows from the body of the request into smaller chunks.
- *
- * @function chunk
- * @param {Object} req - The express request object.
- * @param {Object} res - The express response object.
- * @param {function} next - The next middleware in the stack.
- */
-function chunk(req, res, next) {
-  req.chunks = sp.chunk(req.body.rows, null);
+function chunkArray(req, res, next) {
+  req.chunks = chunk(req.body.rows, null);
   next();
 }
 
-module.exports = {
-  chunk,
+export {
+  chunkArray,
 };
 
 ```
 
 
-### ES6 / TypeScript
-
-Import of the Sparray.js module into a Typescript file
+### CommonJS
 
 ```javascript
 
-import { chunk, deleteProps } from "@dwtechs/sparray";
+const sp = require("@dwtechs/sparray/dist/sparray");
 
-/**
- * Break a large array of rows from the body of the request into smaller chunks.
- *
- * @function chunk
- * @param {Object} req - The express request object.
- * @param {Object} res - The express response object.
- * @param {function} next - The next middleware in the stack.
- */
 function chunk(req, res, next) {
   req.chunks = sp.chunk(req.body.rows, null);
   next();
@@ -99,7 +78,6 @@ function chunk(req, res, next) {
 module.exports = {
   chunk,
 };
-
 
 ```
 
@@ -115,13 +93,17 @@ getChunkSize(): number {}
 
 setChunkSize(size: number): number {}
 
-chunk(rows: any[], size?: number = chunkSize): any[] {} //size?: number
+chunk(rows: any[], size?: number = chunkSize): any[] {}
+
+checkCommonValues(a: any[], b: any[]): boolean {}
 
 getCommonValues(a: any[], b: any[]): any[] {}
 
+// Flatten a chunked array
 flatten(chunks: any[]): any[] {}
 
-deleteProps(arr: any[], props: string[]): any[] {}
+// delete a list of properties
+deleteProps(arr: object[], props: string[]): object[] {}
 
 ```
 
@@ -138,5 +120,5 @@ To contribute please read **[contributor.md](https://github.com/DWTechs/Sparray.
 | repository      |        [Github](https://github.com/)         |     hosting for software development version control using Git |
 | package manager |     [npm](https://www.npmjs.com/get-npm)     |                                default node.js package manager |
 | language        | [TypeScript](https://www.typescriptlang.org) | static type checking along with the latest ECMAScript features |
-| module bundler  |      [Rollup.js](https://rollupjs.org)       |                        advanced module bundler for ES6 modules |
+| module bundler  |      [Rollup](https://rollupjs.org)       |                        advanced module bundler for ES6 modules |
 | unit testing    |          [Jest](https://jestjs.io/)          |                  delightful testing with a focus on simplicity |

@@ -70,7 +70,7 @@ function checkCommonValues(a: any[], b: any[]): boolean {
  * @param {Array} props - The properties to delete.
  * @return {Array} The modified array.
  */
-function deleteProps(arr: any[], props: string[]): any[] {
+function deleteProps(arr: object[], props: string[]): object[] {
   if (isArray(arr, '>', 0) || isArray(props, '>', 0)) 
     for (const l of arr) {
       for (const p of props) {
