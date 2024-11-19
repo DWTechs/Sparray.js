@@ -3,7 +3,7 @@ declare function setChunkSize(size: number): number;
 declare function chunk(rows: any[], size?: number): any[];
 declare function checkCommonValues(a: any[], b: any[]): boolean;
 declare function getCommonValues(a: any[], b: any[]): any[];
-declare function deleteProps(arr: object[], props: string[]): object[];
+declare function deleteProps(arr: Record<string, any>[], props: string[]): Record<string, any>[];
 declare function flatten(chunks: any[]): any[];
 
 export { 

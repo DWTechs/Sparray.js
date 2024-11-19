@@ -103,7 +103,7 @@ getCommonValues(a: any[], b: any[]): any[] {}
 flatten(chunks: any[]): any[] {}
 
 // delete a list of properties
-deleteProps(arr: object[], props: string[]): object[] {}
+deleteProps(arr: Record<string, any>[], props: string[]): Record<string, any>[] {}
 
 ```
 

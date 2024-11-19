@@ -1,4 +1,4 @@
-// const path = require('path');
+
 const fs      = require('fs');
 
 const mail    = 'https://github.com/DWTechs/Sparray.js';

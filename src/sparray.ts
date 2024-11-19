@@ -70,7 +70,7 @@ function checkCommonValues(a: any[], b: any[]): boolean {
  * @param {Array} props - The properties to delete.
  * @return {Array} The modified array.
  */
-function deleteProps(arr: object[], props: string[]): object[] {
+function deleteProps(arr: Record<string, any>[], props: string[]): Record<string, any>[] {
   if (isArray(arr, '>', 0) || isArray(props, '>', 0)) 
     for (const l of arr) {
       for (const p of props) {
@@ -87,7 +87,7 @@ function deleteProps(arr: object[], props: string[]): object[] {
  * @param {Array} chunks - The array of chunks to be flattened.
  * @return {Array} The flattened array.
  */
-function flatten(chunks: any[]): any[] {
+function flatten(chunks: any[][]): any[] {
   return isArray(chunks, '>', 0) ? chunks.flat(2) : chunks;
 }
 
