@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2024 DWTechs
+Copyright (c) 2022 DWTechs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,10 @@ function chunk(rows, size = chunkSize) {
   return chunks;
 }
 function getCommonValues(a, b) {
-  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter(el => b.includes(el)) : [];
+  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter(e => b.includes(e)) : [];
+}
+function checkCommonValues(a, b) {
+  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.some(e => b.includes(e)) : false;
 }
 function deleteProps(arr, props) {
   if (isArray(arr, '>', 0) || isArray(props, '>', 0)) for (const l of arr) {
@@ -59,4 +62,4 @@ function flatten(chunks) {
   return isArray(chunks, '>', 0) ? chunks.flat(2) : chunks;
 }
 
-export { chunk, deleteProps, flatten, getChunkSize, getCommonValues, setChunkSize };
+export { checkCommonValues, chunk, deleteProps, flatten, getChunkSize, getCommonValues, setChunkSize };

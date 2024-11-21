@@ -6,16 +6,16 @@ test('should return an empty array if no common values are found', () => {
   expect(checkCommonValues(arr1, arr2)).toEqual(false);
 });
 
-test('should return the common values between two arrays', () => {
+test('should return true when there are common values between two arrays', () => {
   const arr1 = [1, 2, 3, 4];
   const arr2 = [3, 4, 5, 6];
-  expect(checkCommonValues(arr1, arr2)).toEqual([3, 4]);
+  expect(checkCommonValues(arr1, arr2)).toEqual(true);
 });
 
-test('should not ignore duplicates in the input arrays', () => {
+test('should return true when there are duplicates in the common values', () => {
   const arr1 = [2, 2, 3, 4];
   const arr2 = [1, 2, 2, 3];
-  expect(checkCommonValues(arr1, arr2)).toEqual([2, 2, 3]);
+  expect(checkCommonValues(arr1, arr2)).toEqual(true);
 });
 
 test('should return an empty array if one of the input arrays is empty', () => {

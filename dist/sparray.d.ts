@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2024 DWTechs
+Copyright (c) 2022 DWTechs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,9 @@ https://github.com/DWTechs/Sparray.js
 declare function getChunkSize(): number;
 declare function setChunkSize(size: number): number;
 declare function chunk(rows: any[], size?: number): any[];
+declare function checkCommonValues(a: any[], b: any[]): boolean;
 declare function getCommonValues(a: any[], b: any[]): any[];
-declare function deleteProps(arr: any[], props: string[]): any[];
+declare function deleteProps(arr: Record<string, any>[], props: string[]): Record<string, any>[];
 declare function flatten(chunks: any[]): any[];
 
 export { 
@@ -36,6 +37,7 @@ export {
   setChunkSize,
   chunk,
   deleteProps,
+  checkCommonValues,
   getCommonValues,
   flatten
 };
