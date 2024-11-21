@@ -6,26 +6,24 @@
 [![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/sparray?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/sparray)
 
 - [Synopsis](#synopsis)
-- [Browsers](#browsers)
+- [Support](#support)
 - [Installation](#installation)
 - [Usage](#usage)
   - [ES6](#es6)
   - [CommonJS](#commonjs)
-  - [IIFE](#iife)
 - [API Reference](#api-reference)
 - [Contributors](#contributors)
-- [License](#license)
 - [Stack](#stack)
 
 
 ## Synopsis
 
-**[Sparray.js](https://github.com/DWTechs/Sparray.js)** is an open source Swiss army knife library for Node.js to work with arrays in Javascript.
+**[Sparray.js](https://github.com/DWTechs/Sparray.js)** is an Open source arrays toolkit library for Javascript.
 
-- Only 1 dependency to check inputs variables
+- Only 1 small dependency to check inputs variables
 - Very lightweight
 - Thoroughly tested
-- Works in Node.js
+- Works in Javascript, Typescript and Node.js
 - Can be used as CommonJS or EcmaScrypt module
 - Written in Typescript
 
@@ -68,7 +66,7 @@ export {
 
 ```javascript
 
-const sp = require("@dwtechs/sparray/dist/sparray");
+const sp = require("@dwtechs/sparray");
 
 function chunk(req, res, next) {
   req.chunks = sp.chunk(req.body.rows, null);
@@ -120,5 +118,5 @@ To contribute please read **[contributor.md](https://github.com/DWTechs/Sparray.
 | repository      |        [Github](https://github.com/)         |     hosting for software development version control using Git |
 | package manager |     [npm](https://www.npmjs.com/get-npm)     |                                default node.js package manager |
 | language        | [TypeScript](https://www.typescriptlang.org) | static type checking along with the latest ECMAScript features |
-| module bundler  |      [Rollup](https://rollupjs.org)       |                        advanced module bundler for ES6 modules |
+| module bundler  |      [Rollup](https://rollupjs.org)          |                        advanced module bundler for ES6 modules |
 | unit testing    |          [Jest](https://jestjs.io/)          |                  delightful testing with a focus on simplicity |

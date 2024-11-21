@@ -1,7 +1,7 @@
 {
   "name": "@dwtechs/sparray",
   "version": "0.1.0",
-  "description": "Open source Swiss army knife library for Node.js to work with arrays in Javascript.",
+  "description": "Open source arrays toolkit library for Javascript.",
   "keywords": [
     "arrays"
   ],
