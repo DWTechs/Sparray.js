@@ -28,38 +28,40 @@ import { isValidInteger, isArray } from '@dwtechs/checkard';
 
 let chunkSize = 100;
 function getChunkSize() {
-  return chunkSize;
+    return chunkSize;
 }
 function setChunkSize(size) {
-  chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
-  return chunkSize;
+    chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+    return chunkSize;
 }
 function chunk(rows, size = chunkSize) {
-  const s = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
-  const count = rows.length;
-  if (count <= s) return [rows];
-  const chunks = [];
-  for (let i = 0; i < count; i += size) {
-    chunks.push(rows.slice(i, i + size));
-  }
-  return chunks;
+    const s = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
+    const count = rows.length;
+    if (count <= s)
+        return [rows];
+    const chunks = [];
+    for (let i = 0; i < count; i += size) {
+        chunks.push(rows.slice(i, i + size));
+    }
+    return chunks;
 }
 function getCommonValues(a, b) {
-  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter(e => b.includes(e)) : [];
+    return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.filter((e) => b.includes(e)) : [];
 }
 function checkCommonValues(a, b) {
-  return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.some(e => b.includes(e)) : false;
+    return isArray(a, '>', 0) && isArray(b, '>', 0) ? a.some((e) => b.includes(e)) : false;
 }
 function deleteProps(arr, props) {
-  if (isArray(arr, '>', 0) || isArray(props, '>', 0)) for (const l of arr) {
-    for (const p of props) {
-      delete l[p];
-    }
-  }
-  return arr;
+    if (isArray(arr, '>', 0) || isArray(props, '>', 0))
+        for (const l of arr) {
+            for (const p of props) {
+                delete l[p];
+            }
+        }
+    return arr;
 }
 function flatten(chunks) {
-  return isArray(chunks, '>', 0) ? chunks.flat(2) : chunks;
+    return isArray(chunks, '>', 0) ? chunks.flat(2) : chunks;
 }
 
 export { checkCommonValues, chunk, deleteProps, flatten, getChunkSize, getCommonValues, setChunkSize };
