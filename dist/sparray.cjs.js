@@ -53,62 +53,38 @@ https://github.com/DWTechs/Checkard.js
 */
 
 function isNumeric(n) {
-  return !isNaN(n - parseFloat(n));
+    return !isNaN(n - parseFloat(n));
 }
 function getTag(t) {
-  return t == null ? t === undefined ? '[object Undefined]' : '[object Null]' : toString.call(t);
+    return t == null ? t === undefined ? '[object Undefined]' : '[object Null]' : toString.call(t);
 }
-function isNumber(n, type) {
-  if (type === void 0) {
-    type = true;
-  }
-  return !isSymbol(n) && !((n === null || n === void 0 ? void 0 : n.constructor) === Array) && (type ? Number(n) === n : isNumeric(n));
+function isNumber(n, type = true) {
+    return !isSymbol(n) && !((n === null || n === void 0 ? void 0 : n.constructor) === Array) && (type ? Number(n) === n : isNumeric(n));
 }
 function isSymbol(s) {
-  var type = typeof s;
-  return type === 'symbol' || type === 'object' && s != null && getTag(s) === '[object Symbol]';
+    const type = typeof s;
+    return type === 'symbol' || (type === 'object' && s != null && getTag(s) === '[object Symbol]');
 }
 
-var comparisons = {
-  '=': function _(a, b) {
-    return a == b;
-  },
-  '<': function _(a, b) {
-    return a < b;
-  },
-  '>': function _(a, b) {
-    return a > b;
-  },
-  '<=': function _(a, b) {
-    return a <= b;
-  },
-  '>=': function _(a, b) {
-    return a >= b;
-  }
+const comparisons = {
+    '=': (a, b) => a == b,
+    '<': (a, b) => a < b,
+    '>': (a, b) => a > b,
+    '<=': (a, b) => a <= b,
+    '>=': (a, b) => a >= b
 };
-function isInteger(n, type) {
-  if (type === void 0) {
-    type = true;
-  }
-  if (!isNumber(n, type)) return false;
-  var _int = Number.parseInt(String(n), 10);
-  return type ? n === _int : n == _int;
+function isInteger(n, type = true) {
+    if (!isNumber(n, type))
+        return false;
+    const int = Number.parseInt(String(n), 10);
+    return type ? n === int : n == int;
 }
-function isValidInteger(n, min, max, type) {
-  if (min === void 0) {
-    min = -999999999;
-  }
-  if (max === void 0) {
-    max = 999999999;
-  }
-  if (type === void 0) {
-    type = true;
-  }
-  return isInteger(n, type) && n >= min && n <= max;
+function isValidInteger(n, min = -999999999, max = 999999999, type = true) {
+    return isInteger(n, type) && n >= min && n <= max;
 }
 
 function isArray(a, comp, len) {
-  return (a === null || a === void 0 ? void 0 : a.constructor) === Array ? isValidInteger(len, 0, 999999999) ? comparisons.hasOwnProperty(comp) ? comparisons[comp](a.length, len) : false : true : false;
+    return (a === null || a === void 0 ? void 0 : a.constructor) === Array ? (isValidInteger(len, 0, 999999999)) ? comparisons.hasOwnProperty(comp) ? comparisons[comp](a.length, len) : false : true : false;
 }
 
 let chunkSize = 100;
