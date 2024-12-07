@@ -17,7 +17,7 @@ const files   = [
   },
   {
     src:  `${src}sparray.mjs`,
-    dest: `${dest}sparray.mjs`
+    dest: `${dest}sparray.js`
   },
 ];
 
