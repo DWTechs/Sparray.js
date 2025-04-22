@@ -22,6 +22,19 @@ function setChunkSize(size: number): number {
   return chunkSize;
 }
 
+
+/**
+ * Inserts an element into an array at a specified index.
+ *
+ * @param {unknown[]} a - The array to modify.
+ * @param {unknown} prop - The element to insert into the array.
+ * @param {number} start - The index at which to insert the element.
+ * @returns {unknown[]} The modified array after the insertion.
+ */
+function add(a: unknown[], prop: unknown, start: number): unknown[] {
+  return a.splice(start, 0, prop);
+}
+
 /**
  * Creates chunks of data from a given array of rows.
  *
@@ -94,6 +107,7 @@ function flatten(chunks: any[][]): any[] {
 export {
   getChunkSize,
   setChunkSize,
+  add,
   chunk,
   deleteProps,
   checkCommonValues,
