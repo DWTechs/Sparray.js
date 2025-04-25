@@ -32,7 +32,8 @@ function setChunkSize(size: number): number {
  * @returns {unknown[]} The modified array after the insertion.
  */
 function add(a: unknown[], prop: unknown, start: number): unknown[] {
-  return a.splice(start, 0, prop);
+  a.splice(start, 0, prop);
+  return a;
 }
 
 /**

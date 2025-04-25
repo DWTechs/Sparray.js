@@ -91,6 +91,10 @@ getChunkSize(): number {}
 
 setChunkSize(size: number): number {}
 
+// Inserts an element into an array at a specified index
+add(a: unknown[], prop: unknown, start: number): unknown[];
+
+// Creates chunks of data from a given array of rows
 chunk(rows: any[], size?: number = chunkSize): any[] {}
 
 checkCommonValues(a: any[], b: any[]): boolean {}

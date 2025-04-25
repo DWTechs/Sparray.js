@@ -34,6 +34,10 @@ function setChunkSize(size) {
     chunkSize = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
     return chunkSize;
 }
+function add(a, prop, start) {
+    a.splice(start, 0, prop);
+    return a;
+}
 function chunk(rows, size = chunkSize) {
     const s = isValidInteger(size, 1, 99999, true) ? size : chunkSize;
     const count = rows.length;
@@ -64,4 +68,4 @@ function flatten(chunks) {
     return isArray(chunks, '>', 0) ? chunks.flat(2) : chunks;
 }
 
-export { checkCommonValues, chunk, deleteProps, flatten, getChunkSize, getCommonValues, setChunkSize };
+export { add, checkCommonValues, chunk, deleteProps, flatten, getChunkSize, getCommonValues, setChunkSize };
